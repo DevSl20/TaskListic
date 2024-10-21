@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: skyblue;
+}
+
+h1 {
+    padding: 20px;
+    font-size: 2.5rem;
+    background-color: white;
+}
