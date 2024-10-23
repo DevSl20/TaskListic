@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <title>TaskListic</title>
 
     <!--MARK: TABLER ICONS-->
@@ -29,60 +32,28 @@
       <div class="card bg-base-100 w-64 sm:w-80 md:w-96 shadow-xl">
         <figure>
           <img
-            src="taskey.jpg"
+            src="TaskListic.jpg"
             alt="Pattern"
           />
         </figure>
         <div class="card-body">
           <h1 class="card-title mb-1">TaskListic &mdash; List Your Tasks, Conquer Your Day!</h1>
+          <div class="form-control gap-4">
 
-          <!-- Form -->
-          <form data-form>
-            <input
+          <!--MARK: Form -->
+          <form>
+            <label class="input input-bordered flex items-center gap-2">
+              <input
               type="text"
-              placeholder="Add task"
-              class="input input-bordered w-full max-w-xs"
+              class="grow"
+              placeholder="LETS GET STARTED"
+              autofocus
+              data-input-task=""
             />
+            </label>
           </form>
-
-        <!--TASK CONTAINER-->
-        <div class="form-control" data-task-container>
-          <!-- Single Task -->
-          <label class="label cursor-pointer">
-            <span class="label-text">Go to JIM</span>
-            <input
-              type="checkbox"
-              unchecked="checked"
-              class="checkbox checkbox-primary"
-            />
-          </label>
-          <!-- Second Task -->
-          <label class="label cursor-pointer">
-            <span class="label-text">Eat Protein and Carbs</span>
-            <input
-              type="checkbox"
-              unchecked="checked"
-              class="checkbox checkbox-primary"
-            />
-          </label>
-          <!-- Third Task -->
-          <label class="label cursor-pointer">
-            <span class="label-text">Keep Coding & Trading</span>
-            <input
-              type="checkbox"
-              unchecked="checked"
-              class="checkbox checkbox-primary"
-            />
-          </label>
-          <!-- Fourth Task -->
-          <label class="label cursor-pointer">
-            <span class="label-text">Sleep for 10hrs</span>
-            <input
-              type="checkbox"
-              unchecked="checked"
-              class="checkbox checkbox-primary"
-            />
-          </label>
+          <!-- List of tasks go here -->
+          <section class="px-2 grid gap-1" data-list-tasks></section>
         </div>
       </div>
     </div>
