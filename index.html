@@ -4,30 +4,102 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TASK &mdash; Create TASK!</title>
+    <title>TASK &mdash; Organize Day-To-Day TASK!</title>
+
+    <!--MARK: TABLER ICONS-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
+    />
   </head>
   <body>
+
+    <!--MARK: NAVBAR-->
     <div class="navbar bg-base-100">
       <div class="flex-1">
         <a class="btn btn-ghost text-xl">TODO-TASK MANAGER</a>
       </div>
-      <div class="flex-none">
-        <ul class="menu menu-horizontal px-1">
-          <li><a>Link</a></li>
-          <li>
-            <details>
-              <summary>TASK-ToDo</summary>
-              <ul class="bg-base-100 rounded-t-none p-2">
-                <li><a>Task 1</a></li>
-                <li><a>Task 2</a></li>
-              </ul>
-            </details>
-          </li>
-        </ul>
+        <div class="flex-none">
+          <button class="btn btn-square btn-ghost">
+            <i class="ti ti-brand-github text-2xl"></i>
+          </button>
+        </div>
+    </div>
+
+    <!--MARK: MAIN-->
+    <main class="container h-screen flex justify-center items-center">
+      <div class="card bg-base-100 w-64 sm:w-80 md:w-96 shadow-xl">
+        <figure>
+          <img
+            src="task-concept.jpg"
+            alt="Pattern"
+          />
+        </figure>
+        <div class="card-body">
+          <h1 class="card-title mb-1">TASKey &mdash; Oragnise your TASK...Organize Yourself!</h1>
+
+          <!-- Form -->
+          <form data-form>
+            <input
+              type="text"
+              placeholder="Add task"
+              class="input input-bordered w-full max-w-xs"
+            />
+          </form>
+
+        <!--TASK CONTAINER-->
+        <div class="form-control" data-task-container>
+          <!-- Single Task -->
+          <label class="label cursor-pointer">
+            <span class="label-text">Go to JIM</span>
+            <input
+              type="checkbox"
+              unchecked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+          <!-- Second Task -->
+          <label class="label cursor-pointer">
+            <span class="label-text">Eat Protein and Carbs</span>
+            <input
+              type="checkbox"
+              unchecked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+          <!-- Third Task -->
+          <label class="label cursor-pointer">
+            <span class="label-text">Keep Coding & Trading</span>
+            <input
+              type="checkbox"
+              unchecked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+          <!-- Fourth Task -->
+          <label class="label cursor-pointer">
+            <span class="label-text">Sleep for 10hrs</span>
+            <input
+              type="checkbox"
+              unchecked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+        </div>
       </div>
     </div>
-    <div id="app"></div>
-    <h1 class="underline text-xl font-serif text-orange-300">Hello DaisyUI</h1>
+</main>
+    <!--MARK:FOOTER-->
+    <footer class="footer footer-center bg-base-300 text-base-content p-4">
+      <aside>
+        <p>
+          Copyright © 23-Monday-2024- All right reserved by
+          <a href="https://github.com/DevSl20">TASKs by DG!</a>
+        </p>
+      </aside>
+    </footer>
+
+    <!--MARK:SCRIPTS-->
+
     <script type="module" src="src/main.js"></script>
+
   </body>
 </html>
