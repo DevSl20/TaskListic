@@ -52,10 +52,27 @@
               class="grow"
               placeholder="LETS GET STARTED"
               autofocus
-              data-input-task=""
+              data-user-input
             />
             </label>
           </form>
+          <label class="label cursor-pointer bg-slate-200 rounded p-2">
+            <span class="label-text">Remember me</span>
+            <input
+              type="checkbox"
+              unchecked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+          <label class="label cursor-pointer bg-slate-200 rounded p-2">
+            <span class="label-text">Remember me</span>
+            <input
+              type="checkbox"
+              checked="checked"
+              class="checkbox checkbox-primary"
+            />
+          </label>
+          
           <!-- List of tasks go here -->
           <section class="px-2 grid gap-1" data-list-tasks></section>
         </div>
