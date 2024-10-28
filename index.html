@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskListic</title>
+
+    <!--MARK: FONTS-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
-    <title>TaskListic</title>
 
     <!--MARK: TABLER ICONS-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"
     />
   </head>
-  <body>
+  <body class="font-lobster">
 
     <!--MARK: NAVBAR-->
     <div class="navbar bg-base-100">
@@ -32,31 +34,32 @@
     </div>
 
     <!--MARK: MAIN-->
-    <main class="container min-h-screen flex justify-center items-center">
-      <div class="card bg-base-100 w-64 sm:w-80 md:w-96 shadow-xl">
+    <main class="container min-h-screen flex justify-center items-center glass">
+      <div class="card bg-base-100 w-64 sm:w-80 md:w-96 shadow-xl my-5">
         <figure>
           <img
             src="TaskListic.jpg"
             alt="Pattern"
+            class="w-full h-52 object-cover"
           />
         </figure>
         <div class="card-body">
           <h1 class="card-title mb-1">TaskListic &mdash; List Your Tasks, Conquer Your Day!</h1>
-          <div class="form-control gap-4">
 
           <!--MARK: Form -->
-          <form>
-            <label class="input input-bordered flex items-center gap-2">
-              <input
+          <form data-form>
+            <input
               type="text"
-              class="grow"
-              placeholder="LETS GET STARTED"
-              autofocus
+              placeholder="Add task"
+              class="input input-bordered w-full max-w-xs"
               data-user-input
             />
-            </label>
           </form>
-          <label class="label cursor-pointer bg-slate-200 rounded p-2">
+
+          <!--MARK: Task Container-->
+        <div class="form-control flex flex-col gap-1" data-task-container>
+
+          <label class="label cursor-pointer">
             <span class="label-text">Remember me</span>
             <input
               type="checkbox"
@@ -64,7 +67,7 @@
               class="checkbox checkbox-primary"
             />
           </label>
-          <label class="label cursor-pointer bg-slate-200 rounded p-2">
+          <label class="label cursor-pointer">
             <span class="label-text">Remember me</span>
             <input
               type="checkbox"
