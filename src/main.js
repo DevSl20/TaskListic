@@ -29,7 +29,6 @@ formEl.addEventListener("submit", (e) => {
         isCompleted: false,
         id: tasks.length,
     };
-
     //Adding
     tasks.unshift(newTask);
     renderTask();
