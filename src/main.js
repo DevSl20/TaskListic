@@ -35,14 +35,16 @@ function renderTask(){
     state.unshift(newTask);
     renderTask();
     console.log(state);
-
     //Input Value clear
     inputEl.value = "";
 });
 
 taskContainerEl.addEventListener("click", (e) => {
     if (e.target.tagName === "INPUT") {
-      console.log(e.target.id);
+        toggleCompleted(e.target.id);
+        state.sort((a,b) => a.isCompleted - b.isCompleted);
+        renderTask();
+    //   console.log(e.target.id);
     }
   });
 
