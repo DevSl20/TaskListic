@@ -1,28 +1,28 @@
 import './index.css'
 import SingleTask from './components/SingleTask';
-import { titlecase } from './utils';
+import { titleCase } from './utils';
 
 // === MARK: DOM Selection
 const formEl = document.querySelector("data-form");
 const inputEl = document.querySelector("[data-user-input]");
-const taskContainerEl = doocument .querySelector("[data-task-container]");
+const taskContainerEl = document.querySelector("[data-task-container]");
 
 //Varaibles
-const tasks = [];
+const state = [];
 
 function renderTask(){
     taskContainerEl.innerHTML = "";
 
     const frag = document.createDocumentFragment();
-    tasks.forEach((task) => {
-        frag.appendChild (SingleTask(task.text));
+    state.forEach((task) => {
+        frag.appendChild (SingleTask(task.text, task.isCompleted, task.id));
     });
     taskContainerEl.appenChild(frag);
 }
-
-formEl.addEventListener("submit", (e) => {
-    e.preventDefault();
-    if (!inputEl.vlaue) return ; //Gaurd Clause
+    //=== MARK: Listener
+    formEl.addEventListener("submit", (e) =>{
+        e.preventDefault(); 
+        if (!inputEl.value) return; // Gaurd Clause
     
     //New Task Creating
     const newTask= {
@@ -41,7 +41,15 @@ formEl.addEventListener("submit", (e) => {
     inputEl.value = "";
 });
 
+taskContainerEl.addEventListener("click", (e) => {
+    if (e.target.tagName === "INPUT") {
+      console.log(e.target.id);
+    }
+  });
+
     //Render the Current Year
     const showYearEl = document.querySelector(".show-year");
 showYearEl.textContent = new Date().getFullYear();
+
+
 
