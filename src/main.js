@@ -1,13 +1,13 @@
 import './index.css'
 import SingleTask from './components/SingleTask';
-import { titleCase } from './utils';
+import { titleCase, randomID } from './utils';
 
 // === MARK: DOM Selection
-const formEl = document.querySelector("data-form");
+const formEl = document.querySelector("[data-form]");
 const inputEl = document.querySelector("[data-user-input]");
 const taskContainerEl = document.querySelector("[data-task-container]");
 
-//Varaibles
+//Variables
 const state = [];
 
 function renderTask(){
@@ -28,14 +28,13 @@ function renderTask(){
     const newTask= {
         text: titleCase(inputEl.value),
         isCompleted: true,
-        id: tasks.length,
+        id: randomID(),
     };
 
     //Adding
-    tasks.unshift(newTask);
+    state.unshift(newTask);
     renderTask();
-
-    console.log(tasks);
+    console.log(state);
 
     //Input Value clear
     inputEl.value = "";
