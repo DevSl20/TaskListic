@@ -2,6 +2,7 @@ import './index.css'
 import SingleTask from './components/SingleTask';
 import { titleCase, randomID } from './utils';
 import { formEl, inputEl, taskContainerEl} from './domSelection';
+import localforage from 'localforage';
 
 localforage.setDriver(localforage.LOCALSTORAGE);
 
