@@ -1,4 +1,4 @@
-export default function(){
+export default function(text, isCompleted, id){
     const label = document.createElement("label");
     label.classList.add("label", "cursor-pointer");
 

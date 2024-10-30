@@ -1,24 +1,54 @@
 import './index.css'
 import SingleTask from './components/SingleTask';
 import { titleCase, randomID } from './utils';
+import { formEl, inputEl, taskContainerEl} from './domSelection';
 
-// === MARK: DOM Selection
-const formEl = document.querySelector("[data-form]");
-const inputEl = document.querySelector("[data-user-input]");
-const taskContainerEl = document.querySelector("[data-task-container]");
+localforage.setDriver(localforage.LOCALSTORAGE);
 
-//Variables
-const state = [];
+//===MARK: State
+let state = [];
 
-function renderTask(){
+function updateLocal(){
+    localforage.setItem("tasks", state);
+}
+
+localforage.getItem("tasks").then((data) => {
+    state = data || [];
+    renderTasks();
+  });
+
+    //=== MARK: ClearTasks
+function clearTasks(){
+        state.length= 0;
+        localforage.setItem("tasks", state);
+        renderTasks();
+        inputEl.value= "";
+        
+    }
+
+function toggleCompleted(id) {
+    state = state.map((task) => {
+      if (id === task.id) {
+        return { ...task, isCompleted: !task.isCompleted };
+      }
+  
+      return task;
+    });
+    updateLocal();
+  }
+
+    //=== MARK: Render
+function renderTasks(){
     taskContainerEl.innerHTML = "";
 
     const frag = document.createDocumentFragment();
     state.forEach((task) => {
         frag.appendChild (SingleTask(task.text, task.isCompleted, task.id));
     });
-    taskContainerEl.appenChild(frag);
+
+    taskContainerEl.appendChild(frag);
 }
+
     //=== MARK: Listener
     formEl.addEventListener("submit", (e) =>{
         e.preventDefault(); 
@@ -33,8 +63,12 @@ function renderTask(){
 
     //Adding
     state.unshift(newTask);
-    renderTask();
-    console.log(state);
+
+    // localforage.setItem("tasks", state);
+    updateLocal();
+
+    renderTasks();
+
     //Input Value clear
     inputEl.value = "";
 });
@@ -42,8 +76,12 @@ function renderTask(){
 taskContainerEl.addEventListener("click", (e) => {
     if (e.target.tagName === "INPUT") {
         toggleCompleted(e.target.id);
+
+        //First show Uncompleted
         state.sort((a,b) => a.isCompleted - b.isCompleted);
-        renderTask();
+
+        updateLocal();
+        renderTasks();
     //   console.log(e.target.id);
     }
   });
