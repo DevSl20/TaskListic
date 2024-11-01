@@ -1,14 +1,14 @@
 import './index.css'
+import localforage from 'localforage';
+import { sortBy as sort } from 'lodash';
 import SingleTask from './components/SingleTask';
 import { titleCase, randomID } from './utils';
 import { formEl, inputEl, taskContainerEl} from './domSelection';
-import localforage from 'localforage';
-
-localforage.setDriver(localforage.LOCALSTORAGE);
 
 //===MARK: State
 let state = [];
 
+localforage.setDriver(localforage.LOCALSTORAGE);
 function updateLocal(){
     localforage.setItem("tasks", state);
 }
@@ -21,7 +21,7 @@ localforage.getItem("tasks").then((data) => {
     //=== MARK: ClearTasks
 function clearTasks(){
         state.length= 0;
-        localforage.setItem("tasks", state);
+        updateLocal();
         renderTasks();
         inputEl.value= "";
         
@@ -35,6 +35,7 @@ function toggleCompleted(id) {
   
       return task;
     });
+
     updateLocal();
   }
 
@@ -58,7 +59,7 @@ function renderTasks(){
     //New Task Creating
     const newTask= {
         text: titleCase(inputEl.value),
-        isCompleted: true,
+        isCompleted: false,
         id: randomID(),
     };
 
