@@ -3,7 +3,7 @@ import localforage from 'localforage';
 import { sortBy as sort } from 'lodash';
 import SingleTask from './components/SingleTask';
 import { titleCase, randomID } from './utils';
-import { formEl, inputEl, taskContainerEl} from './domSelection';
+import { formEl, inputEl, buttonEl, taskContainerEl} from './domSelection';
 
 //===MARK: State
 let state = [];
@@ -26,6 +26,10 @@ function clearTasks(){
         inputEl.value= "";
         
     }
+
+    buttonEl.addEventListener("click",()=>{
+        clearTasks()
+      })
 
 function toggleCompleted(id) {
     state = state.map((task) => {
@@ -55,6 +59,7 @@ function renderTasks(){
     formEl.addEventListener("submit", (e) =>{
         e.preventDefault(); 
         if (!inputEl.value) return; // Gaurd Clause
+        if (inputEl.value === ":cleartasks") return clearTasks();
     
     //New Task Creating
     const newTask= {
@@ -80,7 +85,7 @@ taskContainerEl.addEventListener("click", (e) => {
         toggleCompleted(e.target.id);
 
         //First show Uncompleted
-        state.sort((a,b) => a.isCompleted - b.isCompleted);
+        state.sort(state, ["isCompleted"]); // Sort on completed
 
         updateLocal();
         renderTasks();
