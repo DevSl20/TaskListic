@@ -1,5 +1,5 @@
-Task-master
-This To-Do List project is a simple yet effective application designed to help users manage their tasks efficiently
+TaskListic
+-This To-Do List project is a simple yet effective application designed to help users manage their tasks efficiently
 
-features
+Features
 -Add and delete tasks -Mark tasks as complete
