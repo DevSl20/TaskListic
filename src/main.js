@@ -80,12 +80,13 @@ function renderTasks(){
     inputEl.value = "";
 });
 
+//On task toggle
 taskContainerEl.addEventListener("click", (e) => {
     if (e.target.tagName === "INPUT") {
         toggleCompleted(e.target.id);
 
         //First show Uncompleted
-        state.sort(state, ["isCompleted"]); // Sort on completed
+        state = sort(state, ["isCompleted"]); // Sort on completed
 
         updateLocal();
         renderTasks();
